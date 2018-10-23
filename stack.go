@@ -60,6 +60,19 @@ func (s *Stack) Peek() interface{} {
 	return s.Top.Value
 }
 
+func (s *Stack) Pop() interface{} {
+	/*Method Pop has pointer to the Stack as receiver;
+	it checks if stack is empty; if not, it
+	pops and returns top item from the stack.*/
+	if s.Length == 0 {
+		return nil
+	}
+	n := s.Top
+	s.Top = n.Prev
+	s.Length--
+	return n.Value
+}
+
 func (s *Stack) Push(v interface{}) {
 	/*Method Push has pointer to the Stack as receiver;
 	it creates new Node, and pushes value on top of the stack.*/
